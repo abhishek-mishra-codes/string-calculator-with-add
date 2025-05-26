@@ -12,6 +12,8 @@ class StringCalculator
     int_numbers = numbers.split(',').map(&:to_i)
     return int_numbers[0] + int_numbers[1] if int_numbers.size == 2
 
-    int_numbers[0] + int_numbers[1] + int_numbers[2]
+    return int_numbers[0] + int_numbers[1] + int_numbers[2] if int_numbers.size == 3
+
+    int_numbers.sum
   end
 end
