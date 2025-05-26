@@ -10,6 +10,13 @@ class StringCalculator
   end
 
   def string_to_numbers_array(numbers)
-    numbers.gsub('\n', ',').split(',').map(&:to_i)
+    delimiter = separator(numbers)
+    # to_i makes rest of the chars 0, so we don't have to bother about it
+    numbers.gsub('\n', delimiter).split(delimiter).map(&:to_i)
+  end
+
+  # if input starts with //, consider 3rd value as separator
+  def separator(numbers)
+    @separator ||= numbers[0...2] == '//' ? numbers[2, 1] : ','
   end
 end

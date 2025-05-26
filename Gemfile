@@ -63,6 +63,7 @@ end
 group :development, :test do
   # we need rspec in dev as well to generate spec files
   gem 'rspec-rails'
+  gem 'pry'   # to debug
 end
 
 group :test do
