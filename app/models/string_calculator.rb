@@ -10,6 +10,6 @@ class StringCalculator
   end
 
   def string_to_numbers_array(numbers)
-    numbers.split(',').map(&:to_i)
+    numbers.gsub('\n', ',').split(',').map(&:to_i)
   end
 end
