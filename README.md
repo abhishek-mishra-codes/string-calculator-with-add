@@ -9,8 +9,6 @@ This Ruby project implements a string calculator with an `Add` method, developed
 - Handles newlines as delimiters (e.g., `"1\n2,3"` returns `6`).
 - Supports custom delimiters (e.g., `"//;\n1;2"` returns `3`).
 - Throws exceptions for negative numbers (e.g., `"1,-2"` throws `"negatives not allowed: -2"`).
-- Ignores numbers greater than 1000 (e.g., `"2,1001"` returns `2`).
-- Supports multi-character and multiple delimiters (e.g., `"//[*][%]\n1*2%3"` returns `6`).
 
 ## Prerequisites
 
