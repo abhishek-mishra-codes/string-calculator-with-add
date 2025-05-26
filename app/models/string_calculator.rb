@@ -4,9 +4,17 @@
 class StringCalculator
   # @return [Integer] the sum of the numbers, or 0 if the string is empty
   def add(numbers)
+    check_and_raise_for_negative(numbers)
+
     numbers.to_i if numbers.exclude?(',') # as ''.to_i returns 0 only
 
     string_to_numbers_array(numbers).sum
+  end
+
+  def check_and_raise_for_negative(numbers)
+    int_nums = string_to_numbers_array(numbers)
+    negatives = int_nums.select { |num| num < 0 }
+    raise ArgumentError, "Negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
   end
 
   def string_to_numbers_array(numbers)
