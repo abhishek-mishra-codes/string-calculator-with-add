@@ -43,5 +43,15 @@ RSpec.describe StringCalculator do
         expect(calculator.add('5,5,5,5,5,5,50')).to eq(80)
       end
     end
+
+    context 'supports different delimiters' do
+      it 'allows \n as delimiter' do
+        expect(calculator.add('5\n6')).to eq(11)
+      end
+
+      it 'allows mix of \n and , as delimiter' do
+        expect(calculator.add('5\n6,1')).to eq(12)
+      end
+    end
   end
 end
