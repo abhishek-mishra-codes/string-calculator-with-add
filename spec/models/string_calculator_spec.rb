@@ -15,8 +15,3 @@ RSpec.describe StringCalculator do
     end
   end
 end
-
-# temp comment - 1 out of 2 failure
-# Failure/Error: expect(calculator.add('2')).to eq(2)
-#        expected: 2
-#             got: 0
