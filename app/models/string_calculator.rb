@@ -4,16 +4,12 @@
 class StringCalculator
   # @return [Integer] the sum of the numbers, or 0 if the string is empty
   def add(numbers)
-    return 0 if numbers.empty?
+    numbers.to_i if numbers.exclude?(',') # as ''.to_i returns 0 only
 
-    # input excluding ',' means single digit only
-    return numbers.to_i if numbers.exclude? ','
+    string_to_numbers_array(numbers).sum
+  end
 
-    int_numbers = numbers.split(',').map(&:to_i)
-    return int_numbers[0] + int_numbers[1] if int_numbers.size == 2
-
-    return int_numbers[0] + int_numbers[1] + int_numbers[2] if int_numbers.size == 3
-
-    int_numbers.sum
+  def string_to_numbers_array(numbers)
+    numbers.split(',').map(&:to_i)
   end
 end
