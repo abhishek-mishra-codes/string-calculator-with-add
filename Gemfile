@@ -60,6 +60,11 @@ group :development do
   # gem "spring"
 end
 
+group :development, :test do
+  # we need rspec in dev as well to generate spec files
+  gem 'rspec-rails'
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
