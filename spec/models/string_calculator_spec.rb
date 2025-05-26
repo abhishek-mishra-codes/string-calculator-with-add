@@ -35,7 +35,3 @@ RSpec.describe StringCalculator do
     end
   end
 end
-
-# temp comment - 2 of 6 failures
-# Failure/Error: expect(calculator.add('5,2')).to eq(10)
-# Failure/Error: expect(calculator.add('5,5,5')).to eq(15)
