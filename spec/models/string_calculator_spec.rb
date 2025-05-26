@@ -57,5 +57,21 @@ RSpec.describe StringCalculator do
         expect(calculator.add('//;\n1;2')).to eq(3)
       end
     end
+
+    context 'returns sum of any number of input digits passed' do
+      it 'returns 120 for 10,100,2,8 inputs' do
+        expect(calculator.add('10,100,2,8')).to eq(120)
+      end
+
+      it 'returns 15 for 5,5,5,5,5,5,50 inputs' do
+        expect(calculator.add('5,5,5,5,5,5,50')).to eq(80)
+      end
+    end
+
+    context 'Negative inputs not allowed' do
+      it 'throws exceptions if negative values are included' do
+        expect { calculator.add('-1,-42') }.to raise_error(ArgumentError, 'Negative numbers not allowed: -1, -42')
+      end
+    end
   end
 end
