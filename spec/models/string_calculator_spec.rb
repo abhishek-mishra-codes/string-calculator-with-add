@@ -23,5 +23,19 @@ RSpec.describe StringCalculator do
         expect(calculator.add('5,5')).to eq(10)
       end
     end
+
+    context 'returns sum of 3 input digits' do
+      it 'returns 10 for 5,2,3 inputs' do
+        expect(calculator.add('5,2,3')).to eq(10)
+      end
+
+      it 'returns 15 for 5,5,5 inputs' do
+        expect(calculator.add('5,5,5')).to eq(15)
+      end
+    end
   end
 end
+
+# temp comment - 2 of 6 failures
+# Failure/Error: expect(calculator.add('5,2')).to eq(10)
+# Failure/Error: expect(calculator.add('5,5,5')).to eq(15)
