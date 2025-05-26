@@ -10,6 +10,3 @@ RSpec.describe StringCalculator do
     end
   end
 end
-
-# temp comment - Exception after this step
-## NameError: uninitialized constant StringCalculator
