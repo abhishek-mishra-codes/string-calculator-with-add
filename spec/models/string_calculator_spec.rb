@@ -52,7 +52,7 @@ RSpec.describe StringCalculator do
       it 'allows mix of \n and , as delimiter' do
         expect(calculator.add('5\n6,1')).to eq(12)
       end
-      
+
       it 'allows custom delimiter' do
         expect(calculator.add('//;\n1;2')).to eq(3)
       end
@@ -71,6 +71,16 @@ RSpec.describe StringCalculator do
     context 'Negative inputs not allowed' do
       it 'throws exceptions if negative values are included' do
         expect { calculator.add('-1,-42') }.to raise_error(ArgumentError, 'Negative numbers not allowed: -1, -42')
+      end
+    end
+
+    context 'Do product when * as separator' do
+      it 'should return 10 for 5*2' do
+        expect(calculator.add('//*\n5*2')).to eq(10)
+      end
+
+      it 'should return 0 for 5*2*0' do
+        expect(calculator.add('//*\n5*2*0')).to eq(0)
       end
     end
   end

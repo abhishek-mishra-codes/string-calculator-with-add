@@ -8,19 +8,26 @@ class StringCalculator
 
     numbers.to_i if numbers.exclude?(',') # as ''.to_i returns 0 only
 
-    string_to_numbers_array(numbers).sum
+    num_array = string_to_numbers_array(numbers)
+    return num_array.inject(:*) if separator(numbers) == '*'
+
+    num_array.sum
   end
 
   def check_and_raise_for_negative(numbers)
     int_nums = string_to_numbers_array(numbers)
-    negatives = int_nums.select { |num| num < 0 }
+    negatives = int_nums.select(&:negative?)
     raise ArgumentError, "Negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
   end
 
   def string_to_numbers_array(numbers)
     delimiter = separator(numbers)
     # to_i makes rest of the chars 0, so we don't have to bother about it
-    numbers.gsub('\n', delimiter).split(delimiter).map(&:to_i)
+    splitted_array = numbers.gsub('\n', delimiter).split(delimiter)
+
+    # make any other element (except 0 to 9) as 1 for the case of product
+    splitted_array.map! { |item| item.match?(/\A[0-9]\z/) ? item : '1' } if separator(numbers) == '*'
+    splitted_array.map(&:to_i)
   end
 
   # if input starts with //, consider 3rd value as separator
